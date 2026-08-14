@@ -1,0 +1,55 @@
+<Window x:Class="MarkdownViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:MarkdownViewer"
+        Title="Markdown Viewer"
+        Height="720" Width="1000"
+        MinHeight="300" MinWidth="400"
+        WindowStartupLocation="CenterScreen"
+        Background="#FFFFFF"
+        TextOptions.TextFormattingMode="Display"
+        TextOptions.TextRenderingMode="ClearType"
+        Focusable="True">
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Control" Key="O" Command="{x:Static local:MainWindow.OpenCommand}"/>
+        <KeyBinding Modifiers="Control" Key="W" Command="{x:Static local:MainWindow.CloseCommand}"/>
+    </Window.InputBindings>
+
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Background="#F3F3F3" Padding="4">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open File..." InputGestureText="Ctrl+O"
+                          Command="{x:Static local:MainWindow.OpenCommand}"/>
+                <Separator/>
+                <MenuItem Header="_Close File" InputGestureText="Ctrl+W"
+                          Command="{x:Static local:MainWindow.CloseCommand}"/>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About" Command="{x:Static local:MainWindow.AboutCommand}"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- Empty state -->
+        <Grid x:Name="EmptyState" Visibility="Visible" Background="#FAFAFA">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="Open a Markdown file to view it."
+                           FontSize="16" Foreground="#888888"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="Ctrl+O" FontSize="12" Foreground="#AAAAAA"
+                           HorizontalAlignment="Center" Margin="0,6,0,0"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Document viewer -->
+        <FlowDocumentScrollViewer x:Name="DocViewer"
+                                  Visibility="Collapsed"
+                                  IsToolBarVisible="False"
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  Padding="48,24,48,32"
+                                  Foreground="#222222"
+                                  FontFamily="Segoe UI"
+                                  FontSize="15">
+        </FlowDocumentScrollViewer>
+    </DockPanel>
+</Window>

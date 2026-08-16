@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+    <Package 
+        Name="Markdown Viewer" 
+        Language="1033" 
+        Version="0.2.0" 
+        Manufacturer="Fremen IT Workers" 
+        UpgradeCode="a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+        InstallerVersion="500"
+        Compressed="yes">
+        
+        <MajorUpgrade Schedule="afterInstallInitialize" 
+                      DowngradeErrorMessage="A newer version of Markdown Viewer is already installed." />
+        
+        <MediaTemplate EmbedCab="yes" />
+        
+        <!-- Application icon -->
+        <Icon Id="app.ico" SourceFile="app.ico" />
+        <Property Id="ARPPRODUCTICON" Value="app.ico" />
+        
+        <!-- Add/Remove Programs info -->
+        <Property Id="ARPHELPLINK" Value="https://itworkers.fremen.app/" />
+        <Property Id="ARPCOMMENTS" Value="Fast, lightweight Markdown viewer and editor for Windows." />
+        <Property Id="ARPURLINFOABOUT" Value="https://itworkers.fremen.app/" />
+        <Property Id="ARPURLUPDATEINFO" Value="https://github.com/nicktakin/markdown-viewer/releases" />
+        
+        <!-- UI - minimal without dialog -->
+        
+        <Feature Id="MainApplication" Title="Markdown Viewer" Level="1">
+            <ComponentGroupRef Id="AppFiles" />
+            <ComponentRef Id="StartMenuShortcut" />
+            <ComponentRef Id="DesktopShortcut" />
+            <ComponentRef Id="FileAssociation" />
+        </Feature>
+    </Package>
+
+    <Fragment>
+        <ComponentGroup Id="AppFiles" Directory="INSTALLFOLDER">
+            <Component Id="MainExecutable" Guid="*">
+                <File Id="MarkdownViewer.exe" Source="$(var.PublishDir)\MarkdownViewer.exe" KeyPath="yes" />
+            </Component>
+        </ComponentGroup>
+
+        <!-- Start Menu Shortcut -->
+        <DirectoryRef Id="StartMenuPrograms">
+            <Component Id="StartMenuShortcut" Guid="*">
+                <Shortcut 
+                    Id="StartMenuMarkdownViewer" 
+                    Name="Markdown Viewer" 
+                    Description="Markdown Viewer and Editor" 
+                    Target="[INSTALLFOLDER]MarkdownViewer.exe"
+                    WorkingDirectory="INSTALLFOLDER"
+                    Icon="app.ico" />
+                <RemoveFolder Id="StartMenuPrograms" On="uninstall" />
+                <RegistryValue 
+                    Root="HKCU" 
+                    Key="Software\Fremen IT Workers\Markdown Viewer" 
+                    Name="installed" 
+                    Type="integer" 
+                    Value="1" 
+                    KeyPath="yes" />
+            </Component>
+        </DirectoryRef>
+
+        <!-- Desktop Shortcut -->
+        <StandardDirectory Id="DesktopFolder">
+            <Component Id="DesktopShortcut" Guid="*">
+                <Shortcut 
+                    Id="DesktopMarkdownViewer" 
+                    Name="Markdown Viewer" 
+                    Description="Markdown Viewer and Editor" 
+                    Target="[INSTALLFOLDER]MarkdownViewer.exe"
+                    WorkingDirectory="INSTALLFOLDER"
+                    Icon="app.ico" />
+                <RemoveFolder Id="DesktopFolder" On="uninstall" />
+                <RegistryValue 
+                    Root="HKCU" 
+                    Key="Software\Fremen IT Workers\Markdown Viewer" 
+                    Name="desktop" 
+                    Type="integer" 
+                    Value="1" 
+                    KeyPath="yes" />
+            </Component>
+        </StandardDirectory>
+
+        <!-- File Association for .md files -->
+        <Component Id="FileAssociation" Guid="*">
+            <RegistryValue Root="HKCU" Key="Software\Fremen IT Workers\Markdown Viewer" Name="fileassoc" Type="integer" Value="1" KeyPath="yes" />
+            <ProgId Id="MarkdownViewer.md" Description="Markdown Document">
+                <Extension Id="md" ContentType="text/markdown">
+                    <Verb Id="open" Command="Open" TargetFile="MarkdownViewer.exe" />
+                </Extension>
+            </ProgId>
+        </Component>
+    </Fragment>
+
+    <Fragment>
+        <StandardDirectory Id="ProgramFilesFolder">
+            <Directory Id="INSTALLFOLDER" Name="Markdown Viewer" />
+        </StandardDirectory>
+        <StandardDirectory Id="ProgramMenuFolder">
+            <Directory Id="StartMenuPrograms" Name="Markdown Viewer" />
+        </StandardDirectory>
+    </Fragment>
+</Wix>

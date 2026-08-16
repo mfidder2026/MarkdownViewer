@@ -9,14 +9,24 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AssemblyName>MarkdownViewer</AssemblyName>
     <RootNamespace>MarkdownViewer</RootNamespace>
-    <Version>0.1.0</Version>
-    <AssemblyVersion>0.1.0.0</AssemblyVersion>
-    <FileVersion>0.1.0.0</FileVersion>
+    <Version>0.2.0</Version>
+    <AssemblyVersion>0.2.0.0</AssemblyVersion>
+    <FileVersion>0.2.0.0</FileVersion>
     <StartupObject>MarkdownViewer.App</StartupObject>
+    <ApplicationIcon>app.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="app.ico" />
+    <Resource Include="..\..\build\Middel 6@3x IT Workers SMALL.png" Link="build\fremen-logo.png" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Markdig" Version="0.37.0" />
   </ItemGroup>
+
+  <!-- Theme dictionaries are auto-included as Page items by the WPF SDK;
+       no explicit entries needed. Marking them as ResourceDictionary pages
+       keeps them available via pack://application:,,,/Themes/<name>.xaml. -->
 
 </Project>

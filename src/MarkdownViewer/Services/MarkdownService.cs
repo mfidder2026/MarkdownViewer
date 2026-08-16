@@ -13,7 +13,7 @@ namespace MarkdownViewer.Services;
 /// </summary>
 internal static class MarkdownService
 {
-    private static readonly MarkdownPipeline Pipeline =
+    public static readonly MarkdownPipeline Pipeline =
         new MarkdownPipelineBuilder()
             .UseAdvancedExtensions()
             .Build();

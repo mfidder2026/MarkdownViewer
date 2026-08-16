@@ -1,0 +1,73 @@
+<Window x:Class="MarkdownViewer.Windows.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="About"
+        Width="420" Height="320"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Background="{DynamicResource WindowBrush}"
+        Icon="pack://application:,,,/app.ico"
+        ShowInTaskbar="False">
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Company Logo -->
+        <Image Grid.Row="0" x:Name="CompanyLogo"
+               Source="pack://application:,,,/build/fremen-logo.png"
+               MaxWidth="200" MaxHeight="60"
+               Stretch="Uniform"
+               HorizontalAlignment="Left"
+               Margin="0,0,0,12"/>
+
+        <!-- App Title -->
+        <TextBlock Grid.Row="1" Text="Markdown Viewer"
+                   FontSize="22" FontWeight="SemiBold"
+                   Foreground="{DynamicResource TextPrimaryBrush}"/>
+        
+        <!-- Version -->
+        <TextBlock Grid.Row="2" x:Name="VersionText"
+                   FontSize="13" Margin="0,4,0,0"
+                   Foreground="{DynamicResource TextMutedBrush}"/>
+        
+        <!-- Description -->
+        <TextBlock Grid.Row="3" Text="Fast, lightweight Markdown viewer and editor for Windows."
+                   FontSize="13" Margin="0,10,0,0"
+                   TextWrapping="Wrap"
+                   Foreground="{DynamicResource TextPrimaryBrush}"/>
+        
+        <!-- Company Info -->
+        <StackPanel Grid.Row="4" VerticalAlignment="Bottom" Margin="0,0,0,12">
+            <TextBlock Text="Fremen IT Workers"
+                       FontSize="14" FontWeight="SemiBold"
+                       Foreground="{DynamicResource TextPrimaryBrush}"/>
+            <TextBlock Margin="0,4,0,0" FontSize="12" TextWrapping="Wrap"
+                       Foreground="{DynamicResource TextMutedBrush}">
+                Professional IT Services
+            </TextBlock>
+            <TextBlock Margin="0,2,0,0" FontSize="12">
+                <Hyperlink x:Name="WebsiteLink" RequestNavigate="OnWebsiteNavigate">
+                    https://itworkers.fremen.app/
+                </Hyperlink>
+            </TextBlock>
+        </StackPanel>
+        
+        <!-- Footer with copyright -->
+        <TextBlock Grid.Row="5" 
+                   Text="© 2026 Fremen IT Workers. Developed by Michel Fidder."
+                   FontSize="11"
+                   Foreground="{DynamicResource TextMutedBrush}"
+                   HorizontalAlignment="Right"/>
+        
+        <!-- OK Button -->
+        <Button Grid.Row="5" Content="OK" Width="80" HorizontalAlignment="Right"
+                Padding="12,4" IsCancel="True" IsDefault="True"
+                Click="OnOk" VerticalAlignment="Bottom" Margin="0,0,0,30"/>
+    </Grid>
+</Window>

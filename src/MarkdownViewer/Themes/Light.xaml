@@ -1,0 +1,60 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Base surface -->
+    <Color x:Key="WindowColor">#FFFFFF</Color>
+    <SolidColorBrush x:Key="WindowBrush" Color="{StaticResource WindowColor}" />
+    <Color x:Key="SurfaceColor">#FAFAFA</Color>
+    <SolidColorBrush x:Key="SurfaceBrush" Color="{StaticResource SurfaceColor}" />
+
+    <!-- Text -->
+    <Color x:Key="TextPrimaryColor">#1F2328</Color>
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimaryColor}" />
+    <Color x:Key="TextMutedColor">#656D76</Color>
+    <SolidColorBrush x:Key="TextMutedBrush" Color="{StaticResource TextMutedColor}" />
+
+    <!-- Borders / rules -->
+    <Color x:Key="BorderColor">#D0D7DE</Color>
+    <SolidColorBrush x:Key="BorderBrush" Color="{StaticResource BorderColor}" />
+    <Color x:Key="RuleColor">#D0D7DE</Color>
+    <SolidColorBrush x:Key="RuleBrush" Color="{StaticResource RuleColor}" />
+
+    <!-- Code -->
+    <Color x:Key="CodeBackgroundColor">#F6F8FA</Color>
+    <SolidColorBrush x:Key="CodeBackgroundBrush" Color="{StaticResource CodeBackgroundColor}" />
+    <Color x:Key="CodeBorderColor">#D0D7DE</Color>
+    <SolidColorBrush x:Key="CodeBorderBrush" Color="{StaticResource CodeBorderColor}" />
+
+    <!-- Links / accents -->
+    <Color x:Key="AccentColor">#0969FF</Color>
+    <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}" />
+
+    <!-- Editor -->
+    <Color x:Key="EditorBackgroundColor">#FFFFFF</Color>
+    <SolidColorBrush x:Key="EditorBackgroundBrush" Color="{StaticResource EditorBackgroundColor}" />
+    <Color x:Key="EditorCaretColor">#1F2328</Color>
+    <SolidColorBrush x:Key="EditorCaretBrush" Color="{StaticResource EditorCaretColor}" />
+
+    <!-- Lint severities -->
+    <Color x:Key="LintErrorColor">#CF222E</Color>
+    <SolidColorBrush x:Key="LintErrorBrush" Color="{StaticResource LintErrorColor}" />
+    <Color x:Key="LintWarnColor">#BF8700</Color>
+    <SolidColorBrush x:Key="LintWarnBrush" Color="{StaticResource LintWarnColor}" />
+    <Color x:Key="LintInfoColor">#0969FF</Color>
+    <SolidColorBrush x:Key="LintInfoBrush" Color="{StaticResource LintInfoColor}" />
+
+    <!-- Git status badges -->
+    <Color x:Key="GitModifiedColor">#BF8700</Color>
+    <SolidColorBrush x:Key="GitModifiedBrush" Color="{StaticResource GitModifiedColor}" />
+    <Color x:Key="GitAddedColor">#1A7F37</Color>
+    <SolidColorBrush x:Key="GitAddedBrush" Color="{StaticResource GitAddedColor}" />
+    <Color x:Key="GitDeletedColor">#CF222E</Color>
+    <SolidColorBrush x:Key="GitDeletedBrush" Color="{StaticResource GitDeletedColor}" />
+
+    <!-- Tab close -->
+    <Color x:Key="TabHoverColor">#00000000</Color>
+    <SolidColorBrush x:Key="TabHoverBrush" Color="{StaticResource TabHoverColor}" />
+
+    <sys:String x:Key="ThemeName">Light</sys:String>
+</ResourceDictionary>
